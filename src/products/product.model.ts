@@ -11,6 +11,7 @@ export const ProductSchema = new mongoose.Schema({
   leaflet: { type: String, required: true },
   expirationdate: { type: String, required: true },
   contents: { type: String, required: true },
+  pdfurl: { type: String, required: true },
   
 });
 
@@ -25,4 +26,5 @@ export interface Product extends mongoose.Document {
   expirationdate: Date;
   contents: string;
   serialnr: number;
+  pdfurl: string;
 }

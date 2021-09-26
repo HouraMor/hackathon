@@ -30,9 +30,10 @@ import { Role } from 'src/users/users.role.enum';
         @Body('videourl') prodVid: string,
         @Body('contents') prodCnt: string,
         @Body('sideeffects') prodSideeffects: string,
+        @Body('pdfurl') prodPdfurl: string,
     ) {
       const generatedId = await this.productsService.insertProduct(
-        prodName, prodDesc, prodSerial, prodExp, prodLeaflet, prodInstr, prodVid, prodCnt, prodSideeffects,
+        prodName, prodDesc, prodSerial, prodExp, prodLeaflet, prodInstr, prodVid, prodCnt, prodSideeffects, prodPdfurl
       );
       return { id: generatedId };
     }
@@ -68,8 +69,9 @@ import { Role } from 'src/users/users.role.enum';
       @Body('videourl') prodVid: string,
       @Body('contents') prodCnt: string,
       @Body('sideeffects') prodSideeffects: string,
+      @Body('pdfurl') prodPdfurl: string,
     ) {
-      await this.productsService.updateProduct(prodId, prodName, prodDesc, prodSerial, prodExp, prodLeaflet, prodInstr, prodVid, prodCnt, prodSideeffects);
+      await this.productsService.updateProduct(prodId, prodName, prodDesc, prodSerial, prodExp, prodLeaflet, prodInstr, prodVid, prodCnt, prodSideeffects, prodPdfurl);
       return null;
     }
   

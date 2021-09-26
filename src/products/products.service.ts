@@ -11,7 +11,7 @@ export class ProductsService {
     @InjectModel('Product') private readonly productModel: Model<Product>,
   ) {}
 
-  async insertProduct(name: string, desc: string, serialnr: number, exp: Date, instr: string, leaflet: string, vid: string, cnt: string, sideeffects: string) {
+  async insertProduct(name: string, desc: string, serialnr: number, exp: Date, instr: string, leaflet: string, vid: string, cnt: string, sideeffects: string, pdfurl: string) {
     const newProduct = new this.productModel({
       name,
       description: desc,
@@ -22,6 +22,7 @@ export class ProductsService {
       expirationdate: exp,
       instruction: instr,
       leaflet,
+      pdfurl,
 
     });
     const result = await newProduct.save();
@@ -41,6 +42,7 @@ export class ProductsService {
       leaflet: prod.leaflet,
       contents: prod.contents,
       sideeffects: prod.sideeffects,
+      pdfurl: prod.pdfurl,
 
     }));
   }
@@ -58,6 +60,7 @@ export class ProductsService {
         leaflet: product.leaflet,
         contents: product.contents,
         sideeffects: product.sideeffects,
+        pdfurl: product.pdfurl,
     };
   }
 
@@ -73,6 +76,7 @@ export class ProductsService {
     
     contents: string,
     sideeffects: string,
+    pdfurl: string,
     
   ) {
     const updatedProduct = await this.findProduct(productId);
@@ -101,6 +105,9 @@ export class ProductsService {
     if (sideeffects) {
       updatedProduct.sideeffects = sideeffects;
     }
+    if (pdfurl) {
+        updatedProduct.pdfurl = pdfurl;
+      }
     if (expirationdate) {
         updatedProduct.expirationdate = expirationdate;
       }
