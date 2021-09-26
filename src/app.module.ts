@@ -11,7 +11,7 @@ import { UsersModule } from './users/users.module';
     AuthModule, 
     UsersModule,
     ProductsModule,
-    MongooseModule.forRoot('mongodb+srv://houra:houra@cluster0.sdafq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+    MongooseModule.forRoot('mongodb+srv://houra:<password>@cluster0.sdafq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
   ],
   controllers: [AppController],
   providers: [AppService],
